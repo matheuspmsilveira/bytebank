@@ -40,12 +40,12 @@ class Dashboard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       Icon(
-                        Icons.people,
+                        Icons.monetization_on,
                         color: Colors.white,
                         size: 24.0,
                       ),
                       Text(
-                        'Contacts',
+                        'Transfer',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 16.0,
