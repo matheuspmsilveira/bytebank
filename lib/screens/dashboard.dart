@@ -18,46 +18,63 @@ class Dashboard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image.asset('images/bytebank_logo.png'),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
-            child: Material(
-              color: Theme.of(context).primaryColor,
-              child: InkWell(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => const ContactsList(),
-                    ),
-                  );
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  height: 100,
-                  width: 150,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Icon(
-                        Icons.monetization_on,
-                        color: Colors.white,
-                        size: 24.0,
-                      ),
-                      Text(
-                        'Transfer',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
+          Row(
+            children: const [
+              _FeatureItem(name: 'Transfer', icon: Icons.monetization_on),
+              _FeatureItem(name: 'Transaction Feed', icon: Icons.description),
+            ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class _FeatureItem extends StatelessWidget {
+  const _FeatureItem({Key? key, required this.name, required this.icon})
+      : super(key: key);
+
+  final String name;
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
+      child: Material(
+        color: Theme.of(context).primaryColor,
+        child: InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const ContactsList(),
+              ),
+            );
+          },
+          child: Container(
+            padding: const EdgeInsets.all(8.0),
+            height: 100,
+            width: 150,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 24.0,
+                ),
+                Text(
+                  name,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
