@@ -1,4 +1,5 @@
 import 'package:bytebank/screens/contacts_list.dart';
+import 'package:bytebank/screens/transactions_list.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
@@ -22,7 +23,6 @@ class Dashboard extends StatelessWidget {
             height: 150,
             child: ListView(
               scrollDirection: Axis.horizontal,
-
               children: [
                 _FeatureItem(
                   name: 'Transfer',
@@ -32,7 +32,7 @@ class Dashboard extends StatelessWidget {
                 _FeatureItem(
                   name: 'Transaction Feed',
                   icon: Icons.description,
-                  onClick: () => debugPrint('transaction feed was clicked'),
+                  onClick: () => _showTransactionsList(context),
                 ),
               ],
             ),
@@ -46,6 +46,14 @@ class Dashboard extends StatelessWidget {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => const ContactsList(),
+      ),
+    );
+  }
+
+  void _showTransactionsList(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => TransactionsList(),
       ),
     );
   }
