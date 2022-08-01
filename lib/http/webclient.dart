@@ -36,7 +36,8 @@ Future<List<Transaction>> findAll() async {
     port: 8080,
     path: '/transactions',
   );
-  final Response response = await client.get(url);
+  final Response response =
+      await client.get(url).timeout(const Duration(seconds: 5));
   final List<dynamic> decodedJson = jsonDecode(response.body);
 
   final List<Transaction> transactions = [];
